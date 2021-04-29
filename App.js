@@ -9,13 +9,37 @@ import Navigation from './navigation';
 export default function App() {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
+  const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+
+  const handleSignIn = () => {
+    // TODO implement real sign in mechanism
+
+    setIsAuthenticated(true);
+  };
+
+  const handleSignOut = () => {
+    // TODO implement real sign out mechanism
+
+    setIsAuthenticated(false);
+  };
+
+  const handleSignUp = () => {
+    // TODO implement real sign up mechanism
+
+    setIsAuthenticated(true);
+  };
 
   if (!isLoadingComplete) {
     return null;
   } else {
     return (
       <SafeAreaProvider>
-        <Navigation colorScheme={colorScheme} />
+        <Navigation
+          colorScheme={colorScheme}
+          handleSignIn={handleSignIn}
+          isAuthenticated={isAuthenticated}
+          handleSignOut={handleSignOut}
+        />
         <StatusBar />
       </SafeAreaProvider>
     );
