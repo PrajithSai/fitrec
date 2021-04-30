@@ -13,17 +13,20 @@ import { passwordValidator } from '../helpers/passwordValidator';
 import { nameValidator } from '../helpers/nameValidator';
 
 export default function RegisterScreen({ navigation, onSignUp }) {
-  const [name, setName] = useState({ value: '', error: '' });
+  const [firstName, setFirstName] = useState({ value: '', error: '' });
+  const [lastName, setLastName] = useState({ value: '', error: '' });
   const [email, setEmail] = useState({ value: '', error: '' });
   const [password, setPassword] = useState({ value: '', error: '' });
   const [isFocussed, setIsFocussed] = useState(false);
 
   const onSignUpPressed = () => {
-    const nameError = nameValidator(name.value);
+    const firstNameError = nameValidator(firstName.value);
+    const lastNameError = nameValidator(firstName.value);
     const emailError = emailValidator(email.value);
     const passwordError = passwordValidator(password.value);
-    if (emailError || passwordError || nameError) {
-      setName({ ...name, error: nameError });
+    if (emailError || passwordError || firstNameError || lastNameError) {
+      setFirstName({ ...firstName, error: firstNameError });
+      setLastName({ ...lastName, error: lastNameError });
       setEmail({ ...email, error: emailError });
       setPassword({ ...password, error: passwordError });
       return;
@@ -31,7 +34,7 @@ export default function RegisterScreen({ navigation, onSignUp }) {
     onSignUp();
     // navigation.reset({
     //   index: 0,
-    //   routes: [{ name: 'Dashboard' }],
+    //   routes: [{ firstName: 'Dashboard' }],
     // });
   };
 
@@ -46,21 +49,31 @@ export default function RegisterScreen({ navigation, onSignUp }) {
   return (
     <Background>
       <BackButton goBack={navigation.goBack} />
-      <Logo height={isFocussed ? 60 : 250} />
+      <Logo height={isFocussed ? 20 : 60} />
       <Header>Create Account</Header>
       <TextInput
-        label="Name"
-        returnKeyType="next"
-        value={name.value}
-        onChangeText={(text) => setName({ value: text, error: '' })}
-        error={!!name.error}
-        errorText={name.error}
+        label="First name"
+        returnKeyType="Next"
+        value={firstName.value}
+        onChangeText={(text) => setFirstName({ value: text, error: '' })}
+        error={!!firstName.error}
+        errorText={firstName.error}
+        onFocus={setFocus}
+        onBlur={resetFocus}
+      />
+      <TextInput
+        label="Last name"
+        returnKeyType="Next"
+        value={lastName.value}
+        onChangeText={(text) => setLastName({ value: text, error: '' })}
+        error={!!lastName.error}
+        errorText={lastName.error}
         onFocus={setFocus}
         onBlur={resetFocus}
       />
       <TextInput
         label="Email"
-        returnKeyType="next"
+        returnKeyType="Next"
         value={email.value}
         onChangeText={(text) => setEmail({ value: text, error: '' })}
         error={!!email.error}
@@ -74,7 +87,7 @@ export default function RegisterScreen({ navigation, onSignUp }) {
       />
       <TextInput
         label="Password"
-        returnKeyType="done"
+        returnKeyType="Done"
         value={password.value}
         onChangeText={(text) => setPassword({ value: text, error: '' })}
         error={!!password.error}
@@ -92,7 +105,7 @@ export default function RegisterScreen({ navigation, onSignUp }) {
       </Button>
       <View style={styles.row}>
         <Text>Already have an account? </Text>
-        <TouchableOpacity onPress={() => navigation.replace('LoginScreen')}>
+        <TouchableOpacity onPress={() => navigation.replace('Sign In')}>
           <Text style={styles.link}>Login</Text>
         </TouchableOpacity>
       </View>
