@@ -39,6 +39,7 @@ export default function App() {
           handleSignIn={handleSignIn}
           isAuthenticated={isAuthenticated}
           handleSignOut={handleSignOut}
+          handleSignUp={handleSignUp}
         />
         <StatusBar />
       </SafeAreaProvider>

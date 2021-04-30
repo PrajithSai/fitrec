@@ -19,6 +19,7 @@ import NotFoundScreen from '../screens/NotFoundScreen';
 import BottomTabNavigator from './BottomTabNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
 
+import LandingScreen from '../screens/Landing';
 import HomeScreen from '../screens/Home';
 import SignIn from '../screens/SignIn';
 import SignUp from '../screens/SignUp';
@@ -79,28 +80,36 @@ export default function Navigation({
           />
         ) : (
           <>
-            {/* <Stack.Screen
+            <Stack.Screen
               name="Landing"
               component={LandingScreen}
               options={{
                 animationTypeForReplace: 'pop',
+                headerShown: false,
               }}
-            /> */}
+            />
             <Stack.Screen
               name="Sign In"
               options={{
-                animationTypeForReplace: 'pop',
                 headerShown: false,
               }}
             >
               {(props) => <SignIn {...props} onSignIn={handleSignIn} />}
             </Stack.Screen>
-            <Stack.Screen name="Sign Up">
+            <Stack.Screen
+              name="Sign Up"
+              options={{
+                headerShown: false,
+              }}
+            >
               {(props) => <SignUp {...props} onSignUp={handleSignUp} />}
             </Stack.Screen>
             <Stack.Screen
               name="Password Forget"
               component={PasswordForgetScreen}
+              options={{
+                headerShown: false,
+              }}
             />
             <Stack.Screen name="Root" component={BottomTabNavigator} />
             <Stack.Screen
