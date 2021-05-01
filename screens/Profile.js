@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native';
-import { ToggleButton } from 'react-native-paper';
+import { Title } from 'react-native-paper';
+import SegmentedControlTab from 'react-native-segmented-control-tab';
 import Button from '../components/Button';
 import TextInput from '../components/TextInput';
 import { emailValidator } from '../helpers/emailValidator';
 import { nameValidator } from '../helpers/nameValidator';
+import { theme } from '../core/theme';
 
 const styles = StyleSheet.create({
   container: {
@@ -29,23 +31,28 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   heightFeet: {
-    flex: 0.8,
+    flex: 0.5,
   },
   heightInches: {
-    flex: 0.6,
+    flex: 0.5,
     marginLeft: 10,
   },
   genderContainer: {
-    flexDirection: 'row',
+    marginTop: 15,
+    width: '100%',
   },
-  gender: {
-    flex: 1,
-    justifyContent: 'center',
-    // borderWidth: 1,
-    // borderColor: 'red',
-    backgroundColor: 'white',
+  tabStyle: { height: 45, borderColor: theme.colors.primary },
+  activeTabStyle: { backgroundColor: theme.colors.primary },
+  tabTextStyle: { color: theme.colors.primary, fontSize: 16 },
+  bmrContainer: {
+    marginTop: 15,
+    display: 'flex',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
   },
 });
+
+const GENDERS = ['Male', 'Female'];
 
 const Profile = ({ navigation }) => {
   const [firstName, setFirstName] = useState({ value: '', error: '' });
@@ -53,9 +60,10 @@ const Profile = ({ navigation }) => {
   const [email, setEmail] = useState({ value: '', error: '' });
   const [age, setAge] = useState({ value: '', error: '' });
   const [weight, setWeight] = useState({ value: '', error: '' });
+  const [gender, setGender] = useState({ value: 0, error: '' });
   const [heightFeet, setHeightFeet] = useState({ value: '', error: '' });
   const [heightInches, setHeightInches] = useState({ value: '', error: '' });
-  const [weightMetric, setWeightMetric] = React.useState('kg');
+  // const [bmr, setBMR] = useState('');
 
   const onUpdate = () => {
     const firstNameError = nameValidator(firstName.value);
@@ -69,6 +77,35 @@ const Profile = ({ navigation }) => {
     }
   };
 
+  const getHeightInCM = () => {
+    const heightInInches = Number(heightFeet.value) * 12;
+    return (heightInInches + Number(heightInches.value)) * 2.54;
+  };
+
+  const getBMR = () => {
+    if (
+      gender.value >= 0 &&
+      heightFeet.value &&
+      heightInches.value &&
+      weight.value &&
+      age.value
+    ) {
+      const isMale = GENDERS[gender.value] === 'Male';
+      const constant = isMale ? 5 : -161;
+      const height = getHeightInCM();
+      const bmr =
+        10 * weight.value + 6.25 * height - 5 * Number(age.value) + constant;
+      return bmr;
+    }
+    return '';
+    // setBMR(bmr);
+  };
+
+  const handleUpdate = () => {
+    navigation.navigate('Home');
+  };
+
+  const bmr = getBMR();
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -148,14 +185,25 @@ const Profile = ({ navigation }) => {
         </View>
       </View>
       <View style={styles.genderContainer}>
-        <View style={styles.gender}>
-          <ToggleButton icon="human-male" value="male" size={45} />
-        </View>
-        <View style={styles.gender}>
-          <ToggleButton icon="human-female" value="female" size={45} />
-        </View>
+        <SegmentedControlTab
+          values={GENDERS}
+          selectedIndex={gender.value}
+          onTabPress={(value) => setGender({ value, error: '' })}
+          borderRadius={3}
+          tabStyle={styles.tabStyle}
+          activeTabStyle={styles.activeTabStyle}
+          tabTextStyle={styles.tabTextStyle}
+        />
       </View>
-      <Button mode="contained" onPress={onUpdate} style={{ marginTop: 24 }}>
+      {bmr !== '' && (
+        <View style={styles.bmrContainer}>
+          <Title>
+            Your BMR is {bmr} calories/day or {Number(bmr / 24).toFixed(2)}{' '}
+            calories/hour
+          </Title>
+        </View>
+      )}
+      <Button mode="contained" onPress={handleUpdate} style={{ marginTop: 24 }}>
         Update
       </Button>
     </KeyboardAvoidingView>
