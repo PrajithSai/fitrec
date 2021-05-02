@@ -49,7 +49,7 @@ export default function RegisterScreen({ navigation, onSignUp }) {
   return (
     <Background>
       <BackButton goBack={navigation.goBack} />
-      {!isFocussed && <Logo height={200} />}
+      {/* {!isFocussed && <Logo height={200} />} */}
       <Header>Create Account</Header>
       <TextInput
         label="First name"
