@@ -13,7 +13,9 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    marginHorizontal: 25,
+    // marginHorizontal: 25,
+    backgroundColor: 'white',
+    paddingHorizontal: 20,
   },
   weightContainer: {
     flexDirection: 'row',

@@ -78,8 +78,8 @@ const Preferences = () => {
             <View
               style={{
                 paddingRight: 10,
-                backgroundColor: '#f7f7f7',
                 marginTop: 10,
+                marginBottom: 5,
               }}
             >
               <View
