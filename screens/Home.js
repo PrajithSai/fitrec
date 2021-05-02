@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
+import { List, Headline } from 'react-native-paper';
 import TextInput from '../components/TextInput';
 import Check from '../components/Check';
 import Pencil from '../components/Pencil';
 import { theme } from '../core/theme';
+import { exercises } from '../data/exercises';
+import Button from '../components/Button';
 
 const styles = StyleSheet.create({
   container: {
@@ -14,13 +18,16 @@ const styles = StyleSheet.create({
   goalContainer: {
     display: 'flex',
     flexDirection: 'row',
-    // justifyContent: '',
     marginHorizontal: 2,
   },
   recommendationsContainer: {
     alignSelf: 'center',
-    height: '70%',
-    borderWidth: 1,
+    minHeight: '70%',
+    minWidth: '96%',
+    flex: 1,
+    borderRadius: 8,
+    backgroundColor: '#ffffff',
+    marginTop: 10,
   },
   viewDefault: {
     flex: 1,
@@ -28,8 +35,12 @@ const styles = StyleSheet.create({
     padding: 5,
     margin: 5,
     backgroundColor: theme.colors.primary,
+    borderRadius: 8,
+  },
+  listItem: {
+    borderWidth: 1,
+    backgroundColor: 'white',
     borderColor: 'rgb(244, 239, 239)',
-    borderRadius: 5,
   },
 });
 
@@ -38,6 +49,9 @@ const HomeScreen = () => {
   const [calorieGoal, setCalorieGoal] = useState(0);
   const [showTimeAvailInput, setShowTimeAvailInput] = useState(false);
   const [showCalorieGoalInput, setShowCalorieGoalInput] = useState(false);
+
+  const updateRecommendations = () => {};
+
   return (
     <View style={styles.container}>
       <View style={styles.goalContainer}>
@@ -133,7 +147,48 @@ const HomeScreen = () => {
         </View>
       </View>
       <View style={styles.recommendationsContainer}>
-        <Text>Recommendations</Text>
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+          }}
+        >
+          <View style={{ justifyContent: 'center' }}>
+            <Headline style={{ marginLeft: 15 }}>Recommendations</Headline>
+          </View>
+          <View>
+            <TouchableOpacity onPress={updateRecommendations}>
+              <Button>Update</Button>
+            </TouchableOpacity>
+          </View>
+        </View>
+        <ScrollView>
+          {exercises.map((e) => (
+            <List.Item
+              key={e.id}
+              title={e.name}
+              style={styles.listItem}
+              description={
+                // <View>
+                <Text>
+                  This is a sample description to check how a long text would
+                  show up in the list item.
+                </Text>
+                // </View>
+              }
+              left={(props) => (
+                <Image
+                  {...props}
+                  height={35}
+                  style={{ marginLeft: 5 }}
+                  width={35}
+                  source={e.img}
+                />
+              )}
+            />
+          ))}
+        </ScrollView>
       </View>
     </View>
   );

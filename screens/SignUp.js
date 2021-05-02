@@ -49,11 +49,11 @@ export default function RegisterScreen({ navigation, onSignUp }) {
   return (
     <Background>
       <BackButton goBack={navigation.goBack} />
-      <Logo height={isFocussed ? 20 : 60} />
+      {!isFocussed && <Logo height={200} />}
       <Header>Create Account</Header>
       <TextInput
         label="First name"
-        returnKeyType="Next"
+        returnKeyType="next"
         value={firstName.value}
         onChangeText={(text) => setFirstName({ value: text, error: '' })}
         error={!!firstName.error}
@@ -63,7 +63,7 @@ export default function RegisterScreen({ navigation, onSignUp }) {
       />
       <TextInput
         label="Last name"
-        returnKeyType="Next"
+        returnKeyType="next"
         value={lastName.value}
         onChangeText={(text) => setLastName({ value: text, error: '' })}
         error={!!lastName.error}
@@ -73,7 +73,7 @@ export default function RegisterScreen({ navigation, onSignUp }) {
       />
       <TextInput
         label="Email"
-        returnKeyType="Next"
+        returnKeyType="next"
         value={email.value}
         onChangeText={(text) => setEmail({ value: text, error: '' })}
         error={!!email.error}
@@ -87,7 +87,7 @@ export default function RegisterScreen({ navigation, onSignUp }) {
       />
       <TextInput
         label="Password"
-        returnKeyType="Done"
+        returnKeyType="done"
         value={password.value}
         onChangeText={(text) => setPassword({ value: text, error: '' })}
         error={!!password.error}
