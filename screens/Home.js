@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { List, Headline } from 'react-native-paper';
+import { List, Headline, Caption } from 'react-native-paper';
+import moment from 'moment';
 import TextInput from '../components/TextInput';
 import Check from '../components/Check';
 import Pencil from '../components/Pencil';
@@ -60,7 +61,7 @@ const HomeScreen = () => {
         <View style={styles.viewDefault}>
           <View>
             <Text style={{ color: 'white', textAlign: 'center' }}>
-              Time Available in mins
+              Time Available in minutes
             </Text>
             {showTimeAvailInput ? (
               <TextInput
@@ -156,8 +157,9 @@ const HomeScreen = () => {
             justifyContent: 'space-between',
           }}
         >
-          <View style={{ justifyContent: 'center' }}>
-            <Headline style={{ marginLeft: 15 }}>Recommendations</Headline>
+          <View style={{ justifyContent: 'center', marginLeft: 15 }}>
+            <Headline style={{}}>Recommendations</Headline>
+            <Caption>{moment(new Date()).format('MMMM Do, YYYY')}</Caption>
           </View>
           <View>
             <TouchableOpacity onPress={updateRecommendations}>

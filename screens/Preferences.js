@@ -74,6 +74,9 @@ const Preferences = () => {
                 source={ex.img}
               />
             )}
+            right={(props) => (
+              <Text style={{ marginRight: 15 }}>{ex.preference}</Text>
+            )}
           >
             <View
               style={{
