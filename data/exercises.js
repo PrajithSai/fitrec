@@ -33,7 +33,7 @@ const exercises = [
   { name: 'Tennis', img: Tennis, id: 14 },
   { name: 'Volley Ball', img: Volleyball, id: 15 },
   { name: 'Walking', img: Walking, id: 16 },
-  { name: 'Weight lifting', img: WeightLifting, id: 17 },
+  // { name: 'Weight lifting', img: WeightLifting, id: 17 },
 ];
 
 export { exercises };
