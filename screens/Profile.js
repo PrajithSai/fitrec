@@ -8,7 +8,6 @@ import TextInput from '../components/TextInput';
 import { emailValidator } from '../helpers/emailValidator';
 import { nameValidator } from '../helpers/nameValidator';
 import { theme } from '../core/theme';
-import { CorrelationCoefficient } from '../data/users';
 import { updateUser } from '../slices/index';
 
 const styles = StyleSheet.create({
@@ -61,9 +60,10 @@ const GENDERS = ['Male', 'Female'];
 
 const Profile = ({ navigation }) => {
   const dispatch = useDispatch();
-  const { loggedInUser } = useSelector((state) => {
+  const { loggedInUser, users } = useSelector((state) => {
     return {
       loggedInUser: state.app.loggedInUser,
+      users: state.app.users,
     };
   });
   const [firstName, setFirstName] = useState({
@@ -93,9 +93,6 @@ const Profile = ({ navigation }) => {
     error: '',
   });
   // const [bmr, setBMR] = useState('');
-
-  console.log({ loggedInUser });
-  // console.log(CorrelationCoefficient(users[0], users));
 
   const onUpdate = () => {
     const firstNameError = nameValidator(firstName.value);
@@ -237,8 +234,8 @@ const Profile = ({ navigation }) => {
       {bmr !== '' && (
         <View style={styles.bmrContainer}>
           <Title>
-            Your BMR is {bmr} calories/day or {Number(bmr / 24).toFixed(2)}{' '}
-            calories/hour
+            Your BMR is {bmr} Calories/day or {Number(bmr / 24).toFixed(2)}{' '}
+            Calories/hour
           </Title>
         </View>
       )}

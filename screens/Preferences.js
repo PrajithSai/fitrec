@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
-import {
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  ScrollView,
-  View,
-  Image,
-} from 'react-native';
+import { Text, StyleSheet, ScrollView, View, Image } from 'react-native';
 import { List, Caption, Subheading } from 'react-native-paper';
 import Slider from 'react-native-slider';
-import { findIndex } from 'lodash';
+import { findIndex, cloneDeep } from 'lodash';
 import { theme } from '../core/theme';
-import { exercises as exercisesData } from '../data/exercises';
+// import { exercises as exercisesData } from '../data/exercises';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateUser } from '../slices/index';
 
 const styles = StyleSheet.create({
   container: {},
@@ -24,7 +19,14 @@ const styles = StyleSheet.create({
 });
 
 const Preferences = () => {
-  const [exercises, setExercises] = useState(exercisesData);
+  const dispatch = useDispatch();
+  const { loggedInUser, users } = useSelector((state) => {
+    return {
+      loggedInUser: state.app.loggedInUser,
+      users: state.app.users,
+    };
+  });
+  const [exercises, setExercises] = useState(loggedInUser.preferences);
   const [favorites, setFavorites] = useState({});
   const [expanded, setExpanded] = useState([]);
 
@@ -39,12 +41,13 @@ const Preferences = () => {
   };
 
   const handleSliderChange = (exerciseId, preference) => {
-    const ex = [...exercises];
+    const ex = cloneDeep([...exercises]);
     const index = findIndex(ex, { id: exerciseId });
     if (index >= 0) {
       ex[index].preference = preference;
       setExercises(ex);
     }
+    dispatch(updateUser({ ...loggedInUser, preferences: ex }));
   };
 
   const handleAccordionClick = (id) => {

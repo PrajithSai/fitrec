@@ -11,7 +11,7 @@ import Navigation from './navigation';
 export default function App() {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
-  const [isAuthenticated, setIsAuthenticated] = React.useState(true);
+  const [isAuthenticated, setIsAuthenticated] = React.useState(false);
 
   const handleSignIn = () => {
     // TODO implement real sign in mechanism

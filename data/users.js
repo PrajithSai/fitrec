@@ -1,729 +1,19 @@
 //create 50 dummmie users
 import { exercises } from './exercises';
 import { sortBy } from 'lodash';
+
 export function CreateDummieUsers() {
-  // var users = [
-  //   {
-  //     age: 18,
-  //     gender: 'Male',
-  //     first: 'Ian',
-  //     last: 'Hand',
-  //     email: 'ianh@gmail.com',
-  //     password: 'Ian0',
-  //     address: {
-  //       zipCode: '65401',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 30,
-  //     gender: 'Male',
-  //     first: 'Herbert',
-  //     last: 'Feeney',
-  //     email: 'herbertf@gmail.com',
-  //     password: 'Herbert1',
-  //     address: {
-  //       zipCode: '83916',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 26,
-  //     gender: 'Male',
-  //     first: 'Micheal',
-  //     last: 'Toy',
-  //     email: 'michealt@gmail.com',
-  //     password: 'Micheal2',
-  //     address: {
-  //       zipCode: '52663-0497',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 27,
-  //     gender: 'Male',
-  //     first: 'Dewey',
-  //     last: 'Hayes',
-  //     email: 'deweyh@gmail.com',
-  //     password: 'Dewey3',
-  //     address: {
-  //       zipCode: '63628',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 29,
-  //     gender: 'Female',
-  //     first: 'Tonya',
-  //     last: 'Shields',
-  //     email: 'tonyas@gmail.com',
-  //     password: 'Tonya4',
-  //     address: {
-  //       zipCode: '96835-2823',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 29,
-  //     gender: 'Male',
-  //     first: 'Jay',
-  //     last: 'Mayert',
-  //     email: 'jaym@gmail.com',
-  //     password: 'Jay5',
-  //     address: {
-  //       zipCode: '77053-5278',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 23,
-  //     gender: 'Male',
-  //     first: 'Ralph',
-  //     last: 'Douglas',
-  //     email: 'ralphd@gmail.com',
-  //     password: 'Ralph6',
-  //     address: {
-  //       zipCode: '89802-4375',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 29,
-  //     gender: 'Female',
-  //     first: 'Ada',
-  //     last: 'Pfeffer',
-  //     email: 'adap@gmail.com',
-  //     password: 'Ada7',
-  //     address: {
-  //       zipCode: '92909-2372',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 20,
-  //     gender: 'Female',
-  //     first: 'Daisy',
-  //     last: 'Heidenreich',
-  //     email: 'daisyh@gmail.com',
-  //     password: 'Daisy8',
-  //     address: {
-  //       zipCode: '10446',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 21,
-  //     gender: 'Male',
-  //     first: 'Pat',
-  //     last: 'Reichel',
-  //     email: 'patr@gmail.com',
-  //     password: 'Pat9',
-  //     address: {
-  //       zipCode: '66615',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 31,
-  //     gender: 'Female',
-  //     first: 'Tabitha',
-  //     last: 'Jakubowski',
-  //     email: 'tabithaj@gmail.com',
-  //     password: 'Tabitha10',
-  //     address: {
-  //       zipCode: '29697',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 20,
-  //     gender: 'Male',
-  //     first: 'Henry',
-  //     last: 'Price',
-  //     email: 'henryp@gmail.com',
-  //     password: 'Henry11',
-  //     address: {
-  //       zipCode: '93734',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 26,
-  //     gender: 'Female',
-  //     first: 'Lois',
-  //     last: 'Anderson',
-  //     email: 'loisa@gmail.com',
-  //     password: 'Lois12',
-  //     address: {
-  //       zipCode: '77108',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 25,
-  //     gender: 'Female',
-  //     first: 'Tara',
-  //     last: 'Reichel',
-  //     email: 'tarar@gmail.com',
-  //     password: 'Tara13',
-  //     address: {
-  //       zipCode: '41564-9826',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 26,
-  //     gender: 'Male',
-  //     first: 'Nathaniel',
-  //     last: 'Schaefer',
-  //     email: 'nathaniels@gmail.com',
-  //     password: 'Nathaniel14',
-  //     address: {
-  //       zipCode: '19094',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 34,
-  //     gender: 'Female',
-  //     first: 'Leah',
-  //     last: 'Erdman',
-  //     email: 'leahe@gmail.com',
-  //     password: 'Leah15',
-  //     address: {
-  //       zipCode: '31338',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 28,
-  //     gender: 'Male',
-  //     first: 'Bryant',
-  //     last: 'Frami',
-  //     email: 'bryantf@gmail.com',
-  //     password: 'Bryant16',
-  //     address: {
-  //       zipCode: '06245',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 24,
-  //     gender: 'Male',
-  //     first: 'Geoffrey',
-  //     last: 'Wuckert',
-  //     email: 'geoffreyw@gmail.com',
-  //     password: 'Geoffrey17',
-  //     address: {
-  //       zipCode: '99872-1366',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 29,
-  //     gender: 'Female',
-  //     first: 'Jean',
-  //     last: 'Daugherty',
-  //     email: 'jeand@gmail.com',
-  //     password: 'Jean18',
-  //     address: {
-  //       zipCode: '25687-7087',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 21,
-  //     gender: 'Female',
-  //     first: 'Deborah',
-  //     last: 'Pfeffer',
-  //     email: 'deborahp@gmail.com',
-  //     password: 'Deborah19',
-  //     address: {
-  //       zipCode: '88615-4503',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 27,
-  //     gender: 'Female',
-  //     first: 'Antoinette',
-  //     last: 'Lesch',
-  //     email: 'antoinettel@gmail.com',
-  //     password: 'Antoinette20',
-  //     address: {
-  //       zipCode: '83387',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 15,
-  //     gender: 'Female',
-  //     first: 'Yvette',
-  //     last: 'Smitham',
-  //     email: 'yvettes@gmail.com',
-  //     password: 'Yvette21',
-  //     address: {
-  //       zipCode: '82379',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 28,
-  //     gender: 'Female',
-  //     first: 'Jan',
-  //     last: 'King',
-  //     email: 'jank@gmail.com',
-  //     password: 'Jan22',
-  //     address: {
-  //       zipCode: '96114',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 16,
-  //     gender: 'Male',
-  //     first: 'Max',
-  //     last: 'Grant',
-  //     email: 'maxg@gmail.com',
-  //     password: 'Max23',
-  //     address: {
-  //       zipCode: '28687-9328',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 25,
-  //     gender: 'Female',
-  //     first: 'Brooke',
-  //     last: 'Hand',
-  //     email: 'brookeh@gmail.com',
-  //     password: 'Brooke24',
-  //     address: {
-  //       zipCode: '52240-8159',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 15,
-  //     gender: 'Female',
-  //     first: 'Joan',
-  //     last: 'Hodkiewicz',
-  //     email: 'joanh@gmail.com',
-  //     password: 'Joan25',
-  //     address: {
-  //       zipCode: '00302',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 17,
-  //     gender: 'Female',
-  //     first: 'Olive',
-  //     last: 'Gottlieb',
-  //     email: 'oliveg@gmail.com',
-  //     password: 'Olive26',
-  //     address: {
-  //       zipCode: '91115-0845',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 15,
-  //     gender: 'Female',
-  //     first: 'Johanna',
-  //     last: 'Miller',
-  //     email: 'johannam@gmail.com',
-  //     password: 'Johanna27',
-  //     address: {
-  //       zipCode: '74947-0978',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 25,
-  //     gender: 'Female',
-  //     first: 'Nadine',
-  //     last: 'Crooks',
-  //     email: 'nadinec@gmail.com',
-  //     password: 'Nadine28',
-  //     address: {
-  //       zipCode: '50066',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 27,
-  //     gender: 'Female',
-  //     first: 'Marta',
-  //     last: 'Collins',
-  //     email: 'martac@gmail.com',
-  //     password: 'Marta29',
-  //     address: {
-  //       zipCode: '12887',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 33,
-  //     gender: 'Female',
-  //     first: 'Krystal',
-  //     last: 'Wyman',
-  //     email: 'krystalw@gmail.com',
-  //     password: 'Krystal30',
-  //     address: {
-  //       zipCode: '34248',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 20,
-  //     gender: 'Male',
-  //     first: 'Larry',
-  //     last: 'Ziemann',
-  //     email: 'larryz@gmail.com',
-  //     password: 'Larry31',
-  //     address: {
-  //       zipCode: '19320-9838',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 34,
-  //     gender: 'Male',
-  //     first: 'Robert',
-  //     last: 'Reynolds',
-  //     email: 'robertr@gmail.com',
-  //     password: 'Robert32',
-  //     address: {
-  //       zipCode: '97251',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 16,
-  //     gender: 'Female',
-  //     first: 'Lynette',
-  //     last: 'Murphy',
-  //     email: 'lynettem@gmail.com',
-  //     password: 'Lynette33',
-  //     address: {
-  //       zipCode: '43997-1959',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 18,
-  //     gender: 'Male',
-  //     first: 'Marshall',
-  //     last: 'Stokes',
-  //     email: 'marshalls@gmail.com',
-  //     password: 'Marshall34',
-  //     address: {
-  //       zipCode: '56625',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 28,
-  //     gender: 'Female',
-  //     first: 'Leslie',
-  //     last: 'Barrows',
-  //     email: 'leslieb@gmail.com',
-  //     password: 'Leslie35',
-  //     address: {
-  //       zipCode: '98506',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 15,
-  //     gender: 'Male',
-  //     first: 'Enrique',
-  //     last: 'Bernhard',
-  //     email: 'enriqueb@gmail.com',
-  //     password: 'Enrique36',
-  //     address: {
-  //       zipCode: '18210-2972',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 16,
-  //     gender: 'Male',
-  //     first: 'Raymond',
-  //     last: 'Miller',
-  //     email: 'raymondm@gmail.com',
-  //     password: 'Raymond37',
-  //     address: {
-  //       zipCode: '41746-3428',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 34,
-  //     gender: 'Female',
-  //     first: 'Claire',
-  //     last: 'Hoppe',
-  //     email: 'claireh@gmail.com',
-  //     password: 'Claire38',
-  //     address: {
-  //       zipCode: '34234-8031',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 18,
-  //     gender: 'Female',
-  //     first: 'Mable',
-  //     last: 'Greenholt',
-  //     email: 'mableg@gmail.com',
-  //     password: 'Mable39',
-  //     address: {
-  //       zipCode: '46092',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 23,
-  //     gender: 'Male',
-  //     first: 'Jeremiah',
-  //     last: 'Welch',
-  //     email: 'jeremiahw@gmail.com',
-  //     password: 'Jeremiah40',
-  //     address: {
-  //       zipCode: '59745-4754',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 32,
-  //     gender: 'Male',
-  //     first: 'Todd',
-  //     last: 'Considine',
-  //     email: 'toddc@gmail.com',
-  //     password: 'Todd41',
-  //     address: {
-  //       zipCode: '68031-5582',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 24,
-  //     gender: 'Male',
-  //     first: 'Forrest',
-  //     last: 'Abshire',
-  //     email: 'forresta@gmail.com',
-  //     password: 'Forrest42',
-  //     address: {
-  //       zipCode: '42348',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 31,
-  //     gender: 'Female',
-  //     first: 'Silvia',
-  //     last: 'Quigley',
-  //     email: 'silviaq@gmail.com',
-  //     password: 'Silvia43',
-  //     address: {
-  //       zipCode: '65487-8906',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 28,
-  //     gender: 'Male',
-  //     first: 'Andre',
-  //     last: 'Marquardt',
-  //     email: 'andrem@gmail.com',
-  //     password: 'Andre44',
-  //     address: {
-  //       zipCode: '92317-4142',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 18,
-  //     gender: 'Female',
-  //     first: 'Juana',
-  //     last: 'Harvey',
-  //     email: 'juanah@gmail.com',
-  //     password: 'Juana45',
-  //     address: {
-  //       zipCode: '32947-7309',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 15,
-  //     gender: 'Male',
-  //     first: 'Edward',
-  //     last: 'Marvin',
-  //     email: 'edwardm@gmail.com',
-  //     password: 'Edward46',
-  //     address: {
-  //       zipCode: '63384-7252',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 25,
-  //     gender: 'Female',
-  //     first: 'Maria',
-  //     last: 'Kertzmann',
-  //     email: 'mariak@gmail.com',
-  //     password: 'Maria47',
-  //     address: {
-  //       zipCode: '28034',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 20,
-  //     gender: 'Female',
-  //     first: 'Bonnie',
-  //     last: 'Smith',
-  //     email: 'bonnies@gmail.com',
-  //     password: 'Bonnie48',
-  //     address: {
-  //       zipCode: '91478',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  //   {
-  //     age: 18,
-  //     gender: 'Male',
-  //     first: 'Taylor',
-  //     last: 'Wiegand',
-  //     email: 'taylorw@gmail.com',
-  //     password: 'Taylor49',
-  //     address: {
-  //       zipCode: '20069-2904',
-  //       city: 'Rolla',
-  //       streetAddress: '',
-  //       country: 'US',
-  //     },
-  //   },
-  // ];
-  // for (i = 0; i < users.length; i += 1) {
-  //   const user = {
-  //     ...users[i],
-  //     preferences: exercises.map((exercise) => ({
-  //       ...exercise,
-  //       preference: Math.floor(Math.random() * 10) + 1,
-  //     })),
-  //   };
-  //   users[i] = user;
-  // }
   return [
     {
       age: 26,
+      weight: 88,
+      heightFeet: 5,
+      heightInches: 10,
+      height: 180,
       gender: 'Male',
       first: 'Prajith Sai',
       last: 'Sabbani',
       email: 'psdf5@umsystem.edu',
-      weight: 88,
-      heightFeet: 5,
-      heightInches: 10,
       password: 'prajith.sabbani',
       address: {
         zipCode: '65401',
@@ -733,19 +23,19 @@ export function CreateDummieUsers() {
       },
       preferences: [
         {
-          preference: 2,
+          preference: 9,
           name: 'Badminton',
           img: 4,
           id: 1,
         },
         {
-          preference: 9,
+          preference: 2,
           name: 'Basket Ball',
           img: 5,
           id: 2,
         },
         {
-          preference: 1,
+          preference: 5,
           name: 'Burpees',
           img: 11,
           id: 3,
@@ -757,97 +47,97 @@ export function CreateDummieUsers() {
           id: 4,
         },
         {
-          preference: 7,
+          preference: 8,
           name: 'Cycling',
           img: 1,
           id: 5,
         },
         {
-          preference: 10,
+          preference: 2,
           name: 'Deadlift',
           img: 18,
           id: 17,
         },
         {
-          preference: 6,
+          preference: 2,
           name: 'Jumping Jacks',
           img: 13,
           id: 6,
         },
         {
-          preference: 3,
+          preference: 9,
           name: 'Kickboxing',
           img: 19,
           id: 18,
         },
         {
-          preference: 5,
+          preference: 2,
           name: 'Lunges',
           img: 14,
           id: 7,
         },
         {
-          preference: 7,
+          preference: 2,
           name: 'Pilates',
           img: 20,
           id: 19,
         },
         {
-          preference: 5,
+          preference: 2,
           name: 'Push-Ups',
           img: 16,
           id: 8,
         },
         {
-          preference: 1,
+          preference: 2,
           name: 'Running',
           img: 2,
           id: 9,
         },
         {
-          preference: 10,
+          preference: 1,
           name: 'Sit-Ups',
           img: 15,
           id: 10,
         },
         {
-          preference: 1,
+          preference: 9,
           name: 'Skipping Rope',
           img: 10,
           id: 11,
         },
         {
-          preference: 6,
+          preference: 5,
           name: 'Squats',
           img: 17,
           id: 12,
         },
         {
-          preference: 3,
+          preference: 2,
           name: 'Stair Treadmill',
           img: 21,
           id: 20,
         },
         {
-          preference: 1,
+          preference: 9,
           name: 'Swimming',
           img: 8,
           id: 13,
         },
         {
-          preference: 1,
+          preference: 9,
           name: 'Tennis',
           img: 7,
           id: 14,
         },
         {
-          preference: 6,
+          preference: 1,
           name: 'Volley Ball',
           img: 6,
           id: 15,
         },
         {
-          preference: 5,
+          preference: 9,
           name: 'Walking',
           img: 3,
           id: 16,
@@ -856,6 +146,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 25,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 170,
       gender: 'Male',
       first: 'Anil Kumar Reddy',
       last: 'Kodela',
@@ -881,7 +175,7 @@ export function CreateDummieUsers() {
           id: 2,
         },
         {
-          preference: 1,
+          preference: 9,
           name: 'Burpees',
           img: 11,
           id: 3,
@@ -893,7 +187,7 @@ export function CreateDummieUsers() {
           id: 4,
         },
         {
-          preference: 7,
+          preference: 10,
           name: 'Cycling',
           img: 1,
           id: 5,
@@ -905,7 +199,7 @@ export function CreateDummieUsers() {
           id: 17,
         },
         {
-          preference: 6,
+          preference: 9,
           name: 'Jumping Jacks',
           img: 13,
           id: 6,
@@ -923,43 +217,43 @@ export function CreateDummieUsers() {
           id: 7,
         },
         {
-          preference: 7,
+          preference: 9,
           name: 'Pilates',
           img: 20,
           id: 19,
         },
         {
-          preference: 5,
+          preference: 10,
           name: 'Push-Ups',
           img: 16,
           id: 8,
         },
         {
-          preference: 1,
+          preference: 10,
           name: 'Running',
           img: 2,
           id: 9,
         },
         {
-          preference: 10,
+          preference: 1,
           name: 'Sit-Ups',
           img: 15,
           id: 10,
         },
         {
-          preference: 1,
+          preference: 10,
           name: 'Skipping Rope',
           img: 10,
           id: 11,
         },
         {
-          preference: 6,
+          preference: 10,
           name: 'Squats',
           img: 17,
           id: 12,
         },
         {
-          preference: 3,
+          preference: 9,
           name: 'Stair Treadmill',
           img: 21,
           id: 20,
@@ -977,13 +271,13 @@ export function CreateDummieUsers() {
           id: 14,
         },
         {
-          preference: 6,
+          preference: 10,
           name: 'Volley Ball',
           img: 6,
           id: 15,
         },
         {
-          preference: 5,
+          preference: 10,
           name: 'Walking',
           img: 3,
           id: 16,
@@ -992,11 +286,15 @@ export function CreateDummieUsers() {
     },
     {
       age: 18,
+      weight: 95,
+      heightFeet: 5,
+      heightInches: 10,
+      height: 160,
       gender: 'Male',
       first: 'Ian',
       last: 'Hand',
       email: 'ianh@gmail.com',
-      password: 'Ian0',
+      password: 'Ian01',
       address: {
         zipCode: '65401',
         city: 'Rolla',
@@ -1005,13 +303,13 @@ export function CreateDummieUsers() {
       },
       preferences: [
         {
-          preference: 2,
+          preference: 9,
           name: 'Badminton',
           img: 4,
           id: 1,
         },
         {
-          preference: 9,
+          preference: 1,
           name: 'Basket Ball',
           img: 5,
           id: 2,
@@ -1023,7 +321,7 @@ export function CreateDummieUsers() {
           id: 3,
         },
         {
-          preference: 8,
+          preference: 3,
           name: 'Crunches',
           img: 12,
           id: 4,
@@ -1035,61 +333,61 @@ export function CreateDummieUsers() {
           id: 5,
         },
         {
-          preference: 10,
+          preference: 2,
           name: 'Deadlift',
           img: 18,
           id: 17,
         },
         {
-          preference: 6,
+          preference: 2,
           name: 'Jumping Jacks',
           img: 13,
           id: 6,
         },
         {
-          preference: 3,
+          preference: 9,
           name: 'Kickboxing',
           img: 19,
           id: 18,
         },
         {
-          preference: 5,
+          preference: 2,
           name: 'Lunges',
           img: 14,
           id: 7,
         },
         {
-          preference: 7,
+          preference: 3,
           name: 'Pilates',
           img: 20,
           id: 19,
         },
         {
-          preference: 5,
+          preference: 2,
           name: 'Push-Ups',
           img: 16,
           id: 8,
         },
         {
-          preference: 1,
+          preference: 2,
           name: 'Running',
           img: 2,
           id: 9,
         },
         {
-          preference: 10,
+          preference: 2,
           name: 'Sit-Ups',
           img: 15,
           id: 10,
         },
         {
-          preference: 1,
+          preference: 10,
           name: 'Skipping Rope',
           img: 10,
           id: 11,
         },
         {
-          preference: 6,
+          preference: 4,
           name: 'Squats',
           img: 17,
           id: 12,
@@ -1101,25 +399,25 @@ export function CreateDummieUsers() {
           id: 20,
         },
         {
-          preference: 1,
+          preference: 10,
           name: 'Swimming',
           img: 8,
           id: 13,
         },
         {
-          preference: 1,
+          preference: 9,
           name: 'Tennis',
           img: 7,
           id: 14,
         },
         {
-          preference: 6,
+          preference: 3,
           name: 'Volley Ball',
           img: 6,
           id: 15,
         },
         {
-          preference: 5,
+          preference: 9,
           name: 'Walking',
           img: 3,
           id: 16,
@@ -1128,6 +426,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 30,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 5,
+      height: 150,
       gender: 'Male',
       first: 'Herbert',
       last: 'Feeney',
@@ -1141,13 +443,13 @@ export function CreateDummieUsers() {
       },
       preferences: [
         {
-          preference: 5,
+          preference: 3,
           name: 'Badminton',
           img: 4,
           id: 1,
         },
         {
-          preference: 6,
+          preference: 9,
           name: 'Basket Ball',
           img: 5,
           id: 2,
@@ -1159,7 +461,7 @@ export function CreateDummieUsers() {
           id: 3,
         },
         {
-          preference: 2,
+          preference: 9,
           name: 'Crunches',
           img: 12,
           id: 4,
@@ -1171,7 +473,7 @@ export function CreateDummieUsers() {
           id: 5,
         },
         {
-          preference: 7,
+          preference: 9,
           name: 'Deadlift',
           img: 18,
           id: 17,
@@ -1195,7 +497,7 @@ export function CreateDummieUsers() {
           id: 7,
         },
         {
-          preference: 3,
+          preference: 7,
           name: 'Pilates',
           img: 20,
           id: 19,
@@ -1207,31 +509,31 @@ export function CreateDummieUsers() {
           id: 8,
         },
         {
-          preference: 2,
+          preference: 9,
           name: 'Running',
           img: 2,
           id: 9,
         },
         {
-          preference: 1,
+          preference: 5,
           name: 'Sit-Ups',
           img: 15,
           id: 10,
         },
         {
-          preference: 9,
+          preference: 2,
           name: 'Skipping Rope',
           img: 10,
           id: 11,
         },
         {
-          preference: 2,
+          preference: 8,
           name: 'Squats',
           img: 17,
           id: 12,
         },
         {
-          preference: 2,
+          preference: 8,
           name: 'Stair Treadmill',
           img: 21,
           id: 20,
@@ -1243,7 +545,7 @@ export function CreateDummieUsers() {
           id: 13,
         },
         {
-          preference: 4,
+          preference: 3,
           name: 'Tennis',
           img: 7,
           id: 14,
@@ -1255,7 +557,7 @@ export function CreateDummieUsers() {
           id: 15,
         },
         {
-          preference: 6,
+          preference: 5,
           name: 'Walking',
           img: 3,
           id: 16,
@@ -1264,6 +566,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 26,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 5,
+      height: 150,
       gender: 'Male',
       first: 'Micheal',
       last: 'Toy',
@@ -1400,6 +706,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 27,
+      weight: 75,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 170,
       gender: 'Male',
       first: 'Dewey',
       last: 'Hayes',
@@ -1536,6 +846,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 29,
+      weight: 75,
+      heightFeet: 5,
+      heightInches: 10,
+      height: 175,
       gender: 'Female',
       first: 'Tonya',
       last: 'Shields',
@@ -1672,6 +986,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 29,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Male',
       first: 'Jay',
       last: 'Mayert',
@@ -1808,6 +1126,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 23,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Male',
       first: 'Ralph',
       last: 'Douglas',
@@ -1944,6 +1266,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 29,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Female',
       first: 'Ada',
       last: 'Pfeffer',
@@ -2080,6 +1406,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 20,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Female',
       first: 'Daisy',
       last: 'Heidenreich',
@@ -2216,6 +1546,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 21,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Male',
       first: 'Pat',
       last: 'Reichel',
@@ -2352,6 +1686,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 31,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Female',
       first: 'Tabitha',
       last: 'Jakubowski',
@@ -2488,6 +1826,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 20,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Male',
       first: 'Henry',
       last: 'Price',
@@ -2624,6 +1966,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 26,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Female',
       first: 'Lois',
       last: 'Anderson',
@@ -2760,6 +2106,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 25,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Female',
       first: 'Tara',
       last: 'Reichel',
@@ -2896,6 +2246,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 26,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Male',
       first: 'Nathaniel',
       last: 'Schaefer',
@@ -3032,6 +2386,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 34,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Female',
       first: 'Leah',
       last: 'Erdman',
@@ -3168,6 +2526,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 28,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Male',
       first: 'Bryant',
       last: 'Frami',
@@ -3304,6 +2666,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 24,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Male',
       first: 'Geoffrey',
       last: 'Wuckert',
@@ -3440,6 +2806,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 29,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Female',
       first: 'Jean',
       last: 'Daugherty',
@@ -3576,6 +2946,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 21,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Female',
       first: 'Deborah',
       last: 'Pfeffer',
@@ -3712,6 +3086,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 27,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Female',
       first: 'Antoinette',
       last: 'Lesch',
@@ -3848,6 +3226,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 15,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Female',
       first: 'Yvette',
       last: 'Smitham',
@@ -3984,6 +3366,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 28,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Female',
       first: 'Jan',
       last: 'King',
@@ -4120,6 +3506,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 16,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Male',
       first: 'Max',
       last: 'Grant',
@@ -4256,6 +3646,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 25,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Female',
       first: 'Brooke',
       last: 'Hand',
@@ -4392,6 +3786,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 15,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Female',
       first: 'Joan',
       last: 'Hodkiewicz',
@@ -4528,6 +3926,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 17,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Female',
       first: 'Olive',
       last: 'Gottlieb',
@@ -4664,6 +4066,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 15,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Female',
       first: 'Johanna',
       last: 'Miller',
@@ -4800,6 +4206,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 25,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Female',
       first: 'Nadine',
       last: 'Crooks',
@@ -4936,6 +4346,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 27,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Female',
       first: 'Marta',
       last: 'Collins',
@@ -5072,6 +4486,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 33,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Female',
       first: 'Krystal',
       last: 'Wyman',
@@ -5208,6 +4626,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 20,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Male',
       first: 'Larry',
       last: 'Ziemann',
@@ -5344,6 +4766,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 34,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Male',
       first: 'Robert',
       last: 'Reynolds',
@@ -5480,6 +4906,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 16,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Female',
       first: 'Lynette',
       last: 'Murphy',
@@ -5616,6 +5046,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 18,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Male',
       first: 'Marshall',
       last: 'Stokes',
@@ -5752,6 +5186,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 28,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Female',
       first: 'Leslie',
       last: 'Barrows',
@@ -5888,6 +5326,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 15,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Male',
       first: 'Enrique',
       last: 'Bernhard',
@@ -6024,6 +5466,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 16,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Male',
       first: 'Raymond',
       last: 'Miller',
@@ -6160,6 +5606,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 34,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Female',
       first: 'Claire',
       last: 'Hoppe',
@@ -6296,6 +5746,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 18,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Female',
       first: 'Mable',
       last: 'Greenholt',
@@ -6432,6 +5886,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 23,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Male',
       first: 'Jeremiah',
       last: 'Welch',
@@ -6568,6 +6026,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 32,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Male',
       first: 'Todd',
       last: 'Considine',
@@ -6704,6 +6166,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 24,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Male',
       first: 'Forrest',
       last: 'Abshire',
@@ -6840,6 +6306,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 31,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Female',
       first: 'Silvia',
       last: 'Quigley',
@@ -6976,6 +6446,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 28,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Male',
       first: 'Andre',
       last: 'Marquardt',
@@ -7112,6 +6586,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 18,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Female',
       first: 'Juana',
       last: 'Harvey',
@@ -7248,6 +6726,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 15,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Male',
       first: 'Edward',
       last: 'Marvin',
@@ -7384,6 +6866,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 25,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Female',
       first: 'Maria',
       last: 'Kertzmann',
@@ -7520,6 +7006,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 20,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Female',
       first: 'Bonnie',
       last: 'Smith',
@@ -7656,6 +7146,10 @@ export function CreateDummieUsers() {
     },
     {
       age: 18,
+      weight: 70,
+      heightFeet: 5,
+      heightInches: 7,
+      height: 173,
       gender: 'Male',
       first: 'Taylor',
       last: 'Wiegand',
@@ -7802,18 +7296,19 @@ export function CorrelationCoefficient(user, users) {
     0
   );
   var mean1 = prefeSum1 / 20;
+  // console.log(mean1);
 
-  for (i = 0; i < users.length; i++) {
+  for (let i = 0; i < users.length; i++) {
     var temp1, temp2, temp3;
     //mean2 is average of all ratings gievn by user[i]
     const userI = users[i];
-    console.log('userI', userI);
+    // console.log('userI', userI);
 
     var prefeSum2 = userI.preferences.reduce(
       (prev, current) => prev + current.preference,
       0
     );
-    console.log('userI', prefeSum2);
+    // console.log('userI', prefeSum2);
     var mean2 = prefeSum2 / 20;
     //calculating the numerator
     temp1 = 0;
@@ -7821,10 +7316,10 @@ export function CorrelationCoefficient(user, users) {
     const forUserPref = sortBy(user.preferences, ['name']);
     const currentUserPref = sortBy(userI.preferences, ['name']);
 
-    for (let i = 0; i < forUserPref.length; i += 1) {
+    for (let j = 0; j < forUserPref.length; j += 1) {
       const a =
-        (forUserPref[i].preference - mean1) * currentUserPref[i].preference -
-        mean2;
+        (forUserPref[j].preference - mean1) *
+        (currentUserPref[j].preference - mean2);
       temp1 += a;
     }
 
@@ -7851,8 +7346,8 @@ export function CorrelationCoefficient(user, users) {
 
     //calculating the denominator
     temp2 = 0;
-    for (let i = 0; i < forUserPref.length; i += 1) {
-      const b = Math.pow(forUserPref[i].preference - mean1, 2);
+    for (let k = 0; k < forUserPref.length; k += 1) {
+      const b = Math.pow(forUserPref[k].preference - mean1, 2);
       temp2 += b;
     }
 
@@ -7878,8 +7373,8 @@ export function CorrelationCoefficient(user, users) {
     // Math.pow(user.skipping - mean1, 2);
 
     temp3 = 0;
-    for (let i = 0; i < currentUserPref.length; i += 1) {
-      const c = Math.pow(currentUserPref[i].preference - mean2, 2);
+    for (let l = 0; l < currentUserPref.length; l += 1) {
+      const c = Math.pow(currentUserPref[l].preference - mean2, 2);
       temp3 += c;
     }
     // Math.pow(user[i].burpess - mean1, 2) +
@@ -7906,5 +7401,5 @@ export function CorrelationCoefficient(user, users) {
     var corr = temp1 / (Math.sqrt(temp2) * Math.sqrt(temp3));
     correlation[i] = corr;
   }
-  return correlation;
+  return correlation.map((c, i) => ({ correlation: c, index: i }));
 }

@@ -6,7 +6,9 @@ const appSlice = createSlice({
   name: 'app',
   initialState: {
     users: CreateDummieUsers(),
-    loggedInUser: CreateDummieUsers()[0],
+    loggedInUser: {
+      preferences: [],
+    },
     exerciseWeights: [
       {
         type: 'burpees',
@@ -133,7 +135,7 @@ const appSlice = createSlice({
         RMSE: '16.58830769',
       },
       {
-        type: 'basketball',
+        type: 'basket ball',
         w1: '0.016725773',
         w2: '-1.34700899',
         w3: '-49.74730547',

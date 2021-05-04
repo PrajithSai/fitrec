@@ -33,6 +33,7 @@ export default function SignInScreen({ navigation, onSignIn }) {
       email: email.value,
       password: password.value,
     });
+    console.log({ index, users, email, password });
     if (index >= 0) {
       dispatch(setUser(users[index]));
       onSignIn();
