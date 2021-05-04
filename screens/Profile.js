@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import { View, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native';
 import { Title } from 'react-native-paper';
 import SegmentedControlTab from 'react-native-segmented-control-tab';
+import { useSelector, useDispatch } from 'react-redux';
 import Button from '../components/Button';
 import TextInput from '../components/TextInput';
 import { emailValidator } from '../helpers/emailValidator';
 import { nameValidator } from '../helpers/nameValidator';
 import { theme } from '../core/theme';
+import { CorrelationCoefficient } from '../data/users';
+import { updateUser } from '../slices/index';
 
 const styles = StyleSheet.create({
   container: {
@@ -57,15 +60,42 @@ const styles = StyleSheet.create({
 const GENDERS = ['Male', 'Female'];
 
 const Profile = ({ navigation }) => {
-  const [firstName, setFirstName] = useState({ value: '', error: '' });
-  const [lastName, setLastName] = useState({ value: '', error: '' });
-  const [email, setEmail] = useState({ value: '', error: '' });
-  const [age, setAge] = useState({ value: '', error: '' });
-  const [weight, setWeight] = useState({ value: '', error: '' });
-  const [gender, setGender] = useState({ value: 0, error: '' });
-  const [heightFeet, setHeightFeet] = useState({ value: '', error: '' });
-  const [heightInches, setHeightInches] = useState({ value: '', error: '' });
+  const dispatch = useDispatch();
+  const { loggedInUser } = useSelector((state) => {
+    return {
+      loggedInUser: state.app.loggedInUser,
+    };
+  });
+  const [firstName, setFirstName] = useState({
+    value: loggedInUser.first,
+    error: '',
+  });
+  const [lastName, setLastName] = useState({
+    value: loggedInUser.last,
+    error: '',
+  });
+  const [email, setEmail] = useState({ value: loggedInUser.email, error: '' });
+  const [age, setAge] = useState({ value: `${loggedInUser.age}`, error: '' });
+  const [weight, setWeight] = useState({
+    value: `${loggedInUser.weight}`,
+    error: '',
+  });
+  const [gender, setGender] = useState({
+    value: loggedInUser.gender === 'Male' ? 0 : 1,
+    error: '',
+  });
+  const [heightFeet, setHeightFeet] = useState({
+    value: `${loggedInUser.heightFeet}`,
+    error: '',
+  });
+  const [heightInches, setHeightInches] = useState({
+    value: `${loggedInUser.heightInches}`,
+    error: '',
+  });
   // const [bmr, setBMR] = useState('');
+
+  console.log({ loggedInUser });
+  // console.log(CorrelationCoefficient(users[0], users));
 
   const onUpdate = () => {
     const firstNameError = nameValidator(firstName.value);
@@ -104,6 +134,13 @@ const Profile = ({ navigation }) => {
   };
 
   const handleUpdate = () => {
+    const payload = { ...loggedInUser };
+    payload.age = age.value;
+    payload.weight = weight.value;
+    payload.heightFeet = heightFeet.value;
+    payload.heightInches = heightInches.value;
+    payload.height = getHeightInCM();
+    dispatch(updateUser(payload));
     navigation.navigate('Home');
   };
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { TouchableOpacity, StyleSheet, View } from 'react-native';
+import { findIndex } from 'lodash';
 import { Text } from 'react-native-paper';
 import Background from '../components/Background';
 import Logo from '../components/Logo';
@@ -10,11 +11,15 @@ import BackButton from '../components/BackButton';
 import { theme } from '../core/theme';
 import { emailValidator } from '../helpers/emailValidator';
 import { passwordValidator } from '../helpers/passwordValidator';
+import { useDispatch, useSelector } from 'react-redux';
+import { setUser } from '../slices/index';
 
 export default function SignInScreen({ navigation, onSignIn }) {
   const [email, setEmail] = useState({ value: '', error: '' });
   const [password, setPassword] = useState({ value: '', error: '' });
   const [isFocussed, setIsFocussed] = useState(false);
+  const { users } = useSelector((state) => ({ users: state.app.users }));
+  const dispatch = useDispatch();
 
   const onLoginPressed = () => {
     const emailError = emailValidator(email.value);
@@ -24,7 +29,15 @@ export default function SignInScreen({ navigation, onSignIn }) {
       setPassword({ ...password, error: passwordError });
       return;
     }
-    onSignIn();
+    const index = findIndex(users, {
+      email: email.value,
+      password: password.value,
+    });
+    if (index >= 0) {
+      dispatch(setUser(users[index]));
+      onSignIn();
+    }
+
     // navigation.reset({
     //   index: 0,
     //   routes: [{ name: 'Dashboard' }],

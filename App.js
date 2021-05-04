@@ -1,6 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Provider } from 'react-redux';
+import { store } from './slices/store';
 
 import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
@@ -13,7 +15,6 @@ export default function App() {
 
   const handleSignIn = () => {
     // TODO implement real sign in mechanism
-
     setIsAuthenticated(true);
   };
 
@@ -34,14 +35,16 @@ export default function App() {
   } else {
     return (
       <SafeAreaProvider>
-        <Navigation
-          colorScheme={colorScheme}
-          handleSignIn={handleSignIn}
-          isAuthenticated={isAuthenticated}
-          handleSignOut={handleSignOut}
-          handleSignUp={handleSignUp}
-        />
-        <StatusBar />
+        <Provider store={store}>
+          <Navigation
+            colorScheme={colorScheme}
+            handleSignIn={handleSignIn}
+            isAuthenticated={isAuthenticated}
+            handleSignOut={handleSignOut}
+            handleSignUp={handleSignUp}
+          />
+          <StatusBar />
+        </Provider>
       </SafeAreaProvider>
     );
   }
