@@ -17,6 +17,8 @@ import Woman from '../assets/woman.png';
 
 const topK = 4;
 
+const THRESHOLD = 20;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -93,7 +95,7 @@ const HomeScreen = () => {
       ...users[c.index],
       confidence: Number(c.correlation * 100).toFixed(2),
     }))
-    .filter((u) => u.email !== loggedInUser.email);
+    .filter((u) => u.email !== loggedInUser.email && u.confidence >= THRESHOLD);
 
   const setCustomTime = (e) => (value) => {
     const newPrefs = [...prefs];
@@ -115,7 +117,7 @@ const HomeScreen = () => {
       >
         <View style={{ width: '40%' }}>
           <TextInput
-            label="time"
+            label="Time"
             returnKeyType="done"
             value={`${e.customTime}`}
             onChangeText={setCustomTime(e)}
